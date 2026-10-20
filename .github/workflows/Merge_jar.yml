@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: caliph21/xiaosa
+          repository: xiaowu1973/xiaosa
           path: xiaosa
           fetch-depth: 0
           
