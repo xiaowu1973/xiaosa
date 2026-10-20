@@ -1,0 +1,46 @@
+name: Update xiaosa
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 5 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - "tools/**"
+jobs:
+  xiaosa:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout the branch
+        uses: actions/checkout@v7
+
+      
+      - name: xiaosa tools
+        run: |
+          pwd
+          cd tools/
+          pip install demjson3 pycryptodome requests --break-system-packages
+          python tvbox.py https://9877.kstore.space/sun.json xs.json dec
+          python build_local.py xs.json output
+          \cp -pdr output/* ../xiaosa/
+          python copy_xbpq.py ./output/api.json
+          \cp -pdr dianshi_with_app_sites.json ../dianshi.json
+          \cp -pdr jsm_with_app_sites.json ../jsm.json
+          \cp -pdr ./output/spider.jar ../jar/spider.jar
+          rm -rf ./output xs.json
+          cd ../
+        shell: bash
+      - name: Upload xiaosa artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: xiaosa-output
+          path: |
+            jar/spider.jar
+            xiaosa/
+            XBPQ/
+            XYQHiker/
+            json/
+            py/
+            js/
