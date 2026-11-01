@@ -44,3 +44,29 @@ jobs:
             json/
             py/
             js/
+
+  git-push:
+    needs: [xiaosa]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Checkout the branch
+        uses: actions/checkout@v7
+
+      - name: Download xiaosa artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: xiaosa-output
+        continue-on-error: true
+
+      - name: Git push assets to "release" branch
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "更新源 $(date +%Y%m%d%H%M)"
+            git push -f origin master
+          else
+            echo "没有文件更新，不执行 git push"
+          fi
