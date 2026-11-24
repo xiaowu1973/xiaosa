@@ -1,77 +1,75 @@
 name: Update xiaosa
+
 on:
   workflow_dispatch:
   schedule:
     - cron: "20 5 * * *"
   push:
     branches:
-      - master
+      - main
     paths:
       - "tools/**"
+      - ".github/workflows/run.yml"
+
+# 不写这段，默认 GITHUB_TOKEN 只有只读权限，git push 会 403
+permissions:
+  contents: write
+
+concurrency:
+  group: update-xiaosa
+  cancel-in-progress: false
+
 jobs:
   xiaosa:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
-      - name: Checkout the branch
+      - name: Checkout
         uses: actions/checkout@v7
 
-      - name: xiaosa tools
+      - name: Install deps
+        run: python3 -m pip install --break-system-packages demjson3 pycryptodome requests
+
+      - name: Decrypt source and build local files
+        working-directory: tools
         run: |
-          pwd
-          cd tools/
-          pip install demjson3 pycryptodome requests --break-system-packages
-          python tvbox.py https://9877.kstore.space/sun.json xs.json dec
-          python build_local.py xs.json output
-          \cp -pdr output/* ../xiaosa/
-          python copy_xbpq.py ./output/api.json
-          \cp -pdr dianshi_with_app_sites.json ../dianshi.json
-          \cp -pdr jsm_with_app_sites.json ../jsm.json
-          \cp -pdr ./output/spider.jar ../jar/spider.jar
-          rm -rf  output xs.json
-          cd ../
-        shell: bash
-      - name: Upload xiaosa artifacts
+          set -e
+          python3 tvbox.py https://9877.kstore.space/sun.json xs.json dec
+          # tvbox.py 解密失败时也是退出码 0，必须自己检查产物
+          if [ ! -s xs.json ]; then
+            echo "::error::解密失败，xs.json 没有生成"
+            exit 1
+          fi
+          python3 build_local.py xs.json output
+          cp -a output/. ../xiaosa/
+          python3 copy_xbpq.py ./output/api.json
+          cp -a ./output/spider.jar ../jar/spider.jar
+          rm -rf output xs.json
+
+      - name: Upload artifacts
+        # 上一步失败时也要把已经生成的东西传上去
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: xiaosa-output
+          if-no-files-found: warn
           path: |
-            jar/spider.jar
+            jar/
             xiaosa/
-            XBPQ/
             json/
             py/
             js/
 
-  fty:
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - name: Checkout the branch
-        uses: actions/checkout@v7
-
-  git-push:
-    needs: [xiaosa]
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - name: Checkout the branch
-        uses: actions/checkout@v7
-
-      - name: Download xiaosa artifacts
-        uses: actions/download-artifact@v8
-        with:
-          name: xiaosa-output
-        continue-on-error: true
-
-      - name: Git push assets to "release" branch
+      - name: Commit and push
+        if: always()
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          if ! git diff-index --quiet HEAD --; then
-            git commit -m "更新源 $(date +%Y%m%d%H%M)"
-            git push -f origin master
-          else
+          git add -A
+          if git diff-index --quiet HEAD --; then
             echo "没有文件更新，不执行 git push"
+            exit 0
           fi
+          git commit -m "更新源 $(date +%Y%m%d%H%M)"
+          # 仓库默认分支是 main，原来写 origin master 会报
+          # "src refspec master does not match any"
+          git push origin HEAD:main
