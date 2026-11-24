@@ -29,7 +29,36 @@ jobs:
       - name: Install deps
         run: python3 -m pip install --break-system-packages demjson3 pycryptodome requests
 
-      - name: Decrypt source and build local files
+      # ---------------- 源二：wmz（"YmFzZTY0**" + base64(JSON) 格式） -> wmz/ ----------------
+      # 故意放在 sun.json 之前跑：build_local.py 下载 spider 失败时会去 ../jar/spider.jar 兜底，
+      # 先跑 wmz 时 jar/ 里还没有别的 jar，不会把 xiaosa 的 jar 误当成 wmz 的。
+      - name: Decrypt wmz and build wmz files
+        working-directory: tools
+        run: |
+          set -e
+          curl -fsSL --retry 3 --retry-delay 2 "https://8815.kstore.vip/tvbox/wmz" -o wmz.enc
+          python3 - <<'PY'
+          import base64, json, re
+
+          raw = open("wmz.enc", "rb").read().decode("utf-8", "ignore").strip()
+          # 这个接口不是 tvbox 的 hex 格式，而是 "YmFzZTY0**" + base64(JSON)，tvbox.py 解不了
+          body = re.sub(r"^[A-Za-z0-9+/=]+\*\*", "", raw)
+          data = json.loads(base64.b64decode(body + "=" * (-len(body) % 4)))
+          with open("wmz.json", "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+          print("✓ wmz 解码完成, sites =", len(data.get("sites", [])))
+          PY
+          if [ ! -s wmz.json ]; then
+            echo "::error::wmz 解码失败，wmz.json 没有生成"
+            exit 1
+          fi
+          python3 build_local.py wmz.json output_wmz
+          mkdir -p ../wmz
+          cp -a output_wmz/. ../wmz/
+          rm -rf output_wmz wmz.json wmz.enc
+
+      # ---------------- 源一：sun.json（tvbox 的 hex 加密格式） -> xiaosa/ + jar/ ----------------
+      - name: Decrypt sun.json and build xiaosa files
         working-directory: tools
         run: |
           set -e
@@ -40,8 +69,10 @@ jobs:
             exit 1
           fi
           python3 build_local.py xs.json output
+          mkdir -p ../xiaosa
           cp -a output/. ../xiaosa/
           python3 copy_xbpq.py ./output/api.json
+          mkdir -p ../jar
           cp -a ./output/spider.jar ../jar/spider.jar
           rm -rf output xs.json
 
@@ -55,6 +86,7 @@ jobs:
           path: |
             jar/
             xiaosa/
+            wmz/
             json/
             py/
             js/
