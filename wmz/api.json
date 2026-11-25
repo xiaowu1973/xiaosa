@@ -1,5 +1,5 @@
 {
-  "spider": "./spider.jar;md5;743c06e0bf44099db11fde3f8402633f",
+  "spider": "./spider.jar;md5;64622ff0fdba63ce7e76ee77e263b35c",
   "wallpaper": "https://t.alcy.cc/fj",
   "logo": "https://img.meituan.net/poiugc/018d4112d5aaf3d0982bb6bbc2bf71b2292451.gif",
   "warningText": "资源来自网络，无任何盈利纯学习技术！[所有内容仅供学习使用，请勿用于违法及商业用途，请勿付费购买]",
@@ -25,6 +25,8 @@
     {"key": "SeedHub","name": "💯Seed丨网盘资源","type": 3,"api": "csp_SeedHub","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 1,"ext": {"site": ["https://sidhub.cc","https://seeduck.cc","https://hubdog.cc"]},"timeout": 60},
     {"key": "小丑","name": "🤡小丑丨4K网盘","type": 3,"api": "csp_4KZhinan","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"site": ["https://4kxc.com"]},"timeout": 60},
     {"key": "hdmoli","name": "🅾️HDmoli丨网盘","type": 3,"api": "csp_HDMoli","searchable": 1,"quickSearch": 1},
+    {"key": "qiwei","name": "🍃七味丨网盘资源","type": 3,"api": "csp_Qiwei","searchable": 0,"changeable": 0,"timeout": 60,"ext": {"site": ["https://www.qwmkv.com","https://www.qwnull.com","https://www.qwfilm.com","https://www.qnmp4.com","https://www.qn63.com"]}},
+    {"key": "pomo","name": "🅿️Pomo丨网盘资源","type": 3,"api": "csp_Pomo","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": {"site": ["https://pomo.mom"]}},
     {"key": "移动","name": "🌐移动丨4K免扫","type": 3,"api": "csp_Yidong4K","searchable": 1,"quickSearch": 1,"filterable": 1,"timeout": 60},
     {"key": "双星","name": "🌐双星｜4K网盘","type": 3,"api": "csp_ShuangXing","searchable": 1,"quickSearch": 0,"filterable": 0,"style": {"type": "list"},"timeout": 60},
     {"key": "鬼鬼","name": "🔍鬼鬼｜网盘搜索","type": 3,"api": "csp_GuiGui","searchable": 1,"quickSearch": 0,"filterable": 0,"timeout": 60},
@@ -36,6 +38,7 @@
     {"key": "韩圈","name": "🌼韩圈｜蓝光韩剧","type": 3,"api": "csp_Hxq"},
     {"key": "农民影视","name": "🌾农民｜蓝光秒播","type": 3,"api": "csp_Wwys","ext": "https://vip.wwgz.cn:5200"},
     {"key": "热播影视","name": "🌞热播｜蓝光秒播","type": 3,"api": "csp_AppRJ","searchable": 1,"quickSearch": 1,"filterable": 0,"ext": {"url": "http://v.rbotv.cn"}},
+    {"key": "蛋蛋鸭","name": "🦆看鸭丨蓝光秒播","type": 3,"api": "csp_Kanya","searchable": 1,"quick": 1,"ext": "https://www.kankanya.pro"},
     {"key": "搜剧AI","name": "🎈看剧AI丨蓝光秒播","api": "csp_SouJu","type": 3,"searchable": 1,"quickSearch": 1,"filterable": 0},
     {"key": "北斗","name": "🛸北斗丨蓝光秒播","api": "csp_Bdjmcc","type": 3,"searchable": 0,"quickSearch": 0,"filterable": 1},
     {"key": "厂长","name": "🏪厂长｜蓝光影视","type": 3,"api": "csp_Czsapp","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": "https://cz01.vip"},
@@ -46,8 +49,6 @@
     {"key": "剧圈99","name": "⭕剧圈丨蓝光秒播","type": 3,"api": "csp_App99","ext": {"host": "http://124.221.3.182:19987/app/bn","appkey": "d1f0c269eab74d93821fffc9befdbbba","versionName": "1.2.0","name": "剧圈圈","package": "com.qingtangxiaozhuan.xyz","buildNumber": "2002","buildSignature": "054FA8DDA4319C6B6A9B954CA5777541C993F00B1B0BD4394F7EDE48184C4594"}},
     {"key": "天堂","name": "🏵️天堂｜蓝光秒播","type": 3,"api": "csp_AppDrama","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"appName": "电影天堂","publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCduNEnfxGaLuQRk5ABzXHhPV43zi00sCHjLo8BYc+Wi6xXm2b4v0i28Sq4WlNCKhseft9fz8kO/qLr6/022o1RcuOU7e4GFL3U9WnNODwRBYSYWd+K8nqpI/tAUDmZEBGRWqjrc7x6aMl3A+xpnWkLbPCLsuhbuuUE3tv09oeOpwIDAQAB","dataKey": "D2KREWRIBVNAUJJYEDL4VFHOY2Q0PQ==","dataIv": "OC1A06E197EF10CF3F6058CA7A803B5E","pkg": "com.dytiantang.one","host": "","site": "https://dyttandroid04-1372779881.cos.ap-shanghai.myqcloud.com/app_dyttandroid.txt","version": "3.0.0.7","decrypt": "0"}},
     {"key": "橘汁","name": "🍊橘汁丨蓝光秒播","type": 3,"api": "csp_AppDrama","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"appName": "橘汁","publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCr8SzZhjYy+rsya1K09t8d2K50pWFoBkgUqMpKOiW+3IEVKd4eTdvg9RSOjQ82kypL6R9BnsmrS1V8s4PVDwjQbUtYhTPPC9Hz16qY7rpD6m0d2vr09/UpWQ5uOy9PR0QTrsioveZ+DIe9jc3C+zBCu/kZSY/R8stwJoiitki3gwIDAQAB","dataKey": "ZU1DSFFWNENKMDYXVUQRN0ZJDUC4PQ==","dataIv": "OC1A06E197EF10CF3F6058CA7A803B5E","pkg": "com.asjdhjhd.mgd.p3","host": "","site": "https://1848463092.cdn.123clouddisk.com/1848463092/cct/az.txt","version": "3.0.7.0","decrypt": "1"}},
-    {"key": "AppWL","name": "🌀未来丨蓝光秒播","type": 3,"api": "csp_AppWL","searchable": 1,"quick": 1},
-    {"key": "AppYB","name": "☁️云播丨蓝光秒播","type": 3,"api": "csp_AppYB","searchable": 1,"quick": 1,"filterable": 1},
     {"key": "独播影视","name": "🧿独播｜蓝光秒播","type": 3,"api": "csp_Duboku"},
     {"key": "金牌影视","name": "🧿金牌｜蓝光秒播","type": 3,"api": "csp_Jpys","ext": "https://m.610pkea.com,https://y2s52n7.com,https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"},
     {"key": "魔方","name": "💠魔方丨蓝光秒播","type": 3,"api": "csp_AppGet","searchable": 1,"changeable": 1,"ext": {"url": "https://www.douy32mf.top","dataKey": "1234567887654321","dataIv": "1234567887654321"}},
@@ -101,7 +102,7 @@
     {"key": "push_agent","name": "⚓手机｜推送视频","type": 3,"api": "csp_Push","searchable": 0,"filterable": 0,"changeable": 0}
   ],
   "lives": [
-    {"name": "咪咕TV直播","type": 1,"url": "./json/migu.txt"},
+    {"name": "咪咕TV直播","type": 1,"url": "http://www.52top.com.cn:678/downloads/migu.txt"},
     {"name": "央视TV直播","type": 1,"url": "./json/iptv.txt"}
   ],
   "parses": [
