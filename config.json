@@ -48,6 +48,12 @@
       }
     },
     {
+      "key": "360影视",
+      "name": "360",
+      "type": 3,
+      "api": "csp_SP360"
+    },	  
+    {
       "key": "星辰影视",
       "name": "星辰",
       "type": 3,
@@ -431,6 +437,37 @@
       "changeable": 0
     }
   ],
+  "parses": [
+    {
+      "name": "无意云",
+      "type": "1",
+      "url": "https://qsy.wya6.cn/unified_parse.php?key=ozZZQ&url=",
+      "ext": {
+        "flag": [
+          "qq",
+          "腾讯",
+          "qiyi",
+          "爱奇艺",
+          "奇艺",
+          "youku",
+          "优酷",
+          "sohu",
+          "搜狐",
+          "letv",
+          "乐视",
+          "mgtv",
+          "芒果",
+          "tnmb",
+          "seven",
+          "bilibili",
+          "1905"
+        ],
+        "header": {
+          "User-Agent": "okhttp/4.9.1"
+        }
+      }
+    }
+  ],	
   "doh": [
     {
       "name": "Google",
