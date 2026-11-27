@@ -54,12 +54,6 @@
       "api": "csp_XingChen"
     },       
     {
-      "key": "电影天堂",
-      "name": "天堂",
-      "type": 1,
-      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/?ac=list"
-    },
-    {
       "key": "葫芦影视",
       "name": "葫芦",
       "type": 3,
