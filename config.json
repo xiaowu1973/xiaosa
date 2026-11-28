@@ -1,5 +1,5 @@
 {
-  "spider": "./wmz/spider.jar;md5;519166f3489c55176b2ab7586c3e7384",
+  "spider": "./wmz/spider.jar",
   "wallpaper": "http://127.0.0.1:9978/proxy?do=wallpaper",
   "logo": "https://pic7.fukit.cn/autoupload/gE6Y0Af2tjXBCNig6CtNDI12_FRYNb81z6UPhMWD8iI/20251224/dJkT/1080X1080/logo.jpg/webp",
   "danmaku": "http://127.0.0.1:9978/proxy?do=danmaku&name={name}&episode={episode}",
@@ -88,7 +88,18 @@
         "dataKey": "88689667dce61725",
         "dataIv": "88689667dce61725"
       }
-    },    
+    },
+    {
+      "key": "天堂1",
+      "name": "天堂",
+      "type": 3,
+      "api": "csp_AppYsV2",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "playerType": 2,
+      "ext": "http://39.105.18.5:5565/api.php/app/"
+    },	  
     {
       "key": "独播影视",
       "name": "独播",
@@ -279,6 +290,26 @@
       "api": "./py/X影视.py"
     },
     {
+      "key": "天堂",
+      "name": "天堂",
+      "type": 3,
+      "api": "csp_AppDrama",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "appName": "电影天堂",
+        "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCduNEnfxGaLuQRk5ABzXHhPV43zi00sCHjLo8BYc+Wi6xXm2b4v0i28Sq4WlNCKhseft9fz8kO/qLr6/022o1RcuOU7e4GFL3U9WnNODwRBYSYWd+K8nqpI/tAUDmZEBGRWqjrc7x6aMl3A+xpnWkLbPCLsuhbuuUE3tv09oeOpwIDAQAB",
+        "dataKey": "D2KREWRIBVNAUJJYEDL4VFHOY2Q0PQ==",
+        "dataIv": "OC1A06E197EF10CF3F6058CA7A803B5E",
+        "pkg": "com.dytiantang.one",
+        "host": "",
+        "site": "https://dyttandroid04-1372779881.cos.ap-shanghai.myqcloud.com/app_dyttandroid.txt",
+        "version": "3.0.0.7",
+        "decrypt": "0"
+      }
+    },	  
+    {
       "key": "师兄",
       "name": "师兄",
       "type": 3,
@@ -331,7 +362,97 @@
         "type": "rect",
         "ratio": 1.597
       }
-    },    
+    },
+    {
+      "key": "ixcyy",
+      "name": "澜星",
+      "type": 3,
+      "api": "csp_Ixcyy",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "https://www.ixcyy.tv"
+    },    	  
+    {
+      "key": "蛋蛋鸭",
+      "name": "看鸭",
+      "type": 3,
+      "api": "csp_Kanya",
+      "searchable": 1,
+      "quick": 1,
+      "ext": "https://www.kankanya.pro"
+    },
+    {
+      "key": "搜剧AI",
+      "name": "搜剧",
+      "api": "csp_SouJu",
+      "type": 3,
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
+    {
+      "key": "北斗",
+      "name": "北斗",
+      "api": "csp_Bdjmcc",
+      "type": 3,
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 1
+    },	  
+    {
+      "key": "hdmoli",
+      "name": "HDmoli",
+      "type": 3,
+      "api": "csp_HDMoli",
+      "searchable": 1,
+      "quickSearch": 1
+    },
+    {
+      "key": "xgyk",
+      "name": "星光",
+      "type": 3,
+      "api": "csp_XingGuang",
+      "searchable": 1,
+      "quickSearch": 1,
+      "ext": {
+        "site": [
+          "https://xkykmovie.com"
+        ]
+      }
+    },
+    {
+      "key": "qiwei",
+      "name": "七味",
+      "type": 3,
+      "api": "csp_Qiwei",
+      "searchable": 0,
+      "changeable": 0,
+      "timeout": 60,
+      "ext": {
+        "site": [
+          "https://www.qwmkv.com",
+          "https://www.qwnull.com",
+          "https://www.qwfilm.com",
+          "https://www.qnmp4.com",
+          "https://www.qn63.com"
+        ]
+      }
+    },
+    {
+      "key": "pomo",
+      "name": "Pomo",
+      "type": 3,
+      "api": "csp_Pomo",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "ext": {
+        "site": [
+          "https://pomo.mom"
+        ]
+      }
+    },	  
     {
       "key": "盘搜",
       "name": "盘搜",
@@ -359,6 +480,26 @@
       "timeout": 60,
       "api": "csp_QuPanSo"
     },
+    {
+      "key": "音海",
+      "name": "音海",
+      "type": 3,
+      "api": "csp_Yinhai",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 0,
+      "timeout": 60
+    },
+    {
+      "key": "聚合",
+      "name": "聚合",
+      "type": 3,
+      "api": "csp_JuheSo",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 0,
+      "timeout": 60
+    },	  
     {
       "key": "酷我音乐",
       "name": "酷我",
