@@ -53,8 +53,29 @@ jobs:
             exit 1
           fi
           python3 build_local.py wmz.json output_wmz
+          # 把下载到的 spider.jar 改名成 wmz.jar，并同步改写 api.json 的 spider 字段（md5 不变）
+          python3 - <<'PY'
+          import os, re
+
+          src, dst, api = "output_wmz/spider.jar", "output_wmz/wmz.jar", "output_wmz/api.json"
+          if os.path.exists(src) and os.path.exists(api):
+              os.replace(src, dst)
+              with open(api, encoding="utf-8") as f:
+                  text = f.read()
+              new, n = re.subn(r'("spider"\s*:\s*")(?:\./)?spider\.jar', r'\1./wmz.jar', text, count=1)
+              if n:
+                  with open(api, "w", encoding="utf-8") as f:
+                      f.write(new)
+                  print("✓ spider.jar 已改名为 wmz.jar，api.json 的 spider 已同步为 ./wmz.jar")
+              else:
+                  print("::warning::api.json 里没找到 ./spider.jar，spider 字段未改写")
+          else:
+              print("::warning::没有下载到 spider.jar（spider 仍指向远程地址），跳过改名")
+          PY
           mkdir -p ../wmz
           cp -a output_wmz/. ../wmz/
+          # 旧版本用的是 wmz/spider.jar，改名后要清掉，避免仓库里两份 jar 并存
+          rm -f ../wmz/spider.jar
           rm -rf output_wmz wmz.json wmz.enc
 
       # ---------------- 源一：sun.json（tvbox 的 hex 加密格式） -> xiaosa/ + jar/ ----------------
