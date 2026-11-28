@@ -372,20 +372,17 @@
       "quickSearch": 1,
       "filterable": 1,
       "ext": "https://www.ixcyy.tv"
-    },    	  
+    },
     {
-      "key": "蛋蛋鸭",
+      "key": "看看鸭",
       "name": "看鸭",
       "type": 3,
-      "api": "csp_Kanya",
-      "searchable": 1,
-      "quick": 1,
-      "ext": "https://www.kankanya.pro"
-    },
+      "api": "./py/看看鸭.py"
+    },	  
     {
       "key": "搜剧AI",
       "name": "搜剧",
-      "api": "csp_SouJu",
+      "api": "./py/搜剧AI.py",
       "type": 3,
       "searchable": 1,
       "quickSearch": 1,
