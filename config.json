@@ -47,6 +47,14 @@
         "ratio": 1.618
       }
     },
+	{
+	  "key":"资源管理",
+	  "name":"资源",
+	  "type": 3,
+	  "api":"./py/资源管理.py",
+	  "searchable":0,
+	  "quickSearch":0
+	},  
     {
       "key": "360影视",
       "name": "360",
